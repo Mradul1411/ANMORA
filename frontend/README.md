@@ -1,6 +1,6 @@
-# Density Ops — frontend
+# ANMORA — frontend
 
-Live dashboard for the **Real-Time Traffic & Crowd Density Predictor**
+Live dashboard for the **ANMORA**
 (YOLOv8 → ByteTrack → interval counts → percentile density states → 15-minute forecast).
 
 Design rationale, colour tokens, API contract and build order: **`../FRONTEND-PLAN.md`**.

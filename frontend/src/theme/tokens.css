@@ -1,0 +1,75 @@
+/* ============================================================================
+   DESIGN TOKENS — Traffic & Crowd Density Predictor
+   Single source of truth for colour. Tailwind maps these to utility classes.
+   Format: space-separated RGB triplets so Tailwind can apply alpha (<alpha-value>).
+
+   Contrast note (dark theme): every text token below clears WCAG AA 4.5:1 on its
+   intended surface. Status hues are also paired with an icon + label in the UI so
+   colour is never the only signal.
+   ========================================================================== */
+
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Surfaces — three levels only: background, card, floating overlay */
+  --bg: 10 14 20; /* #0A0E14  app background, reads "off", not pure black */
+  --surface: 17 23 32; /* #111720  cards / panels */
+  --elevated: 24 32 44; /* #18202C  popovers, tooltips, active nav item */
+  --line: 33 43 58; /* #212B3A  hairline borders */
+
+  /* Text — every value below is measured ≥ 4.5:1 (WCAG AA) on its intended surface. */
+  --ink: 230 238 247; /* #E6EEF7  primary text       15.37:1 on surface */
+  --muted: 149 166 187; /* #95A6BB  secondary text      7.24:1 on surface */
+  --faint: 123 140 161; /* #7B8CA1  tertiary, axis ticks 5.23:1 surface / 4.77:1 elevated */
+
+  /* Brand / interactive */
+  --primary: 34 211 238; /* #22D3EE  cyan — live data, focus, primary actions */
+  --primary-ink: 4 22 27; /* text that sits ON primary */
+  --forecast: 167 139 250; /* #A78BFA  violet — predicted values, always dashed */
+
+  /* Density states (percentile bands from the report) */
+  --low: 16 185 129; /* #10B981  < p25   */
+  --medium: 245 158 11; /* #F59E0B  p25–p75 */
+  --high: 249 115 22; /* #F97316  p75–p90 */
+  --critical: 239 68 68; /* #EF4444  > p90   */
+
+  /* COCO class accents for per-class bars */
+  --person: 56 189 248; /* sky  */
+  --car: 129 140 248; /* indigo */
+  --bus: 251 191 36; /* amber */
+  --truck: 244 114 182; /* pink */
+  --moto: 52 211 153; /* emerald */
+
+  --r-card: 12px;
+  --focus-ring: 0 0 0 2px rgb(var(--bg)), 0 0 0 4px rgb(var(--primary));
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: 243 245 248; /* #F3F5F8 */
+  --surface: 255 255 255; /* #FFFFFF */
+  --elevated: 255 255 255;
+  --line: 219 226 235; /* #DBE2EB */
+
+  --ink: 15 23 33; /* #0F1721 */
+  --muted: 93 108 126; /* #5D6C7E   5.37:1 */
+  --faint: 102 116 133; /* #667485   4.77:1 */
+
+  /* Accents are darkened, not reused: the dark-theme hues all fail AA on white. */
+  --primary: 8 127 153; /* #087F99   4.66:1 (dark-theme #22D3EE measures 1.76:1) */
+  --primary-ink: 255 255 255;
+  --forecast: 124 58 237; /* #7C3AED */
+
+  --low: 4 120 87; /* #047857   5.48:1 (emerald-700; #059669 was only 3.77:1) */
+  --medium: 180 83 9; /* #B45309   5.02:1 */
+  --high: 194 65 12; /* #C2410C   5.18:1 */
+  --critical: 220 38 38; /* #DC2626   4.83:1 */
+
+  --person: 2 132 199;
+  --car: 79 70 229;
+  --bus: 161 98 7;
+  --truck: 190 24 93;
+  --moto: 4 120 87;
+}

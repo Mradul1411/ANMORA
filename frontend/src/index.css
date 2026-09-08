@@ -1,0 +1,86 @@
+@import './theme/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: rgb(var(--line));
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    /* Tabular figures everywhere stops live numbers from jittering the layout. */
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1, 'cv02' 1;
+  }
+
+  /* Visible, consistent focus for keyboard users. */
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--line));
+    border-radius: 999px;
+    border: 3px solid rgb(var(--bg));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-card border border-line bg-surface shadow-card;
+  }
+
+  .card-head {
+    @apply flex items-center justify-between gap-3 border-b border-line px-4 py-3;
+  }
+
+  .card-title {
+    @apply text-[11px] font-semibold uppercase tracking-[0.08em] text-muted;
+  }
+
+  /* Big live number. Monospaced + tabular so it never reflows. */
+  .metric-value {
+    @apply font-mono text-3xl font-semibold leading-none tracking-tight;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg border border-line bg-elevated px-3 py-1.5
+      text-sm font-medium text-ink transition-colors hover:border-primary/60 hover:text-primary
+      disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn-primary {
+    @apply border-transparent bg-primary text-[rgb(var(--primary-ink))] hover:bg-primary/90 hover:text-[rgb(var(--primary-ink))];
+  }
+
+  .grid-lines {
+    background-image: linear-gradient(rgb(var(--line) / 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--line) / 0.35) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
